@@ -1,0 +1,15 @@
+{
+  "name": "delete_todo",
+  "description": "Delete a TODO item by UID from a named calendar.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar containing the todo."
+    },
+    "uid": {
+      "type": "string",
+      "description": "UID of the todo to delete."
+    }
+  }
+}

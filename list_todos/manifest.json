@@ -1,0 +1,15 @@
+{
+  "name": "list_todos",
+  "description": "List todos in a calendar, optionally filtered by status.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar to list todos from."
+    },
+    "status": {
+      "type": "string",
+      "description": "Optional status to filter by (e.g. NEEDS-ACTION, COMPLETED, IN-PROCESS, CANCELLED)."
+    }
+  }
+}

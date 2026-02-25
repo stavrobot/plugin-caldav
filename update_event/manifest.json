@@ -1,0 +1,35 @@
+{
+  "name": "update_event",
+  "description": "Update fields of an existing event identified by UID. Only provided fields are changed.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar containing the event."
+    },
+    "uid": {
+      "type": "string",
+      "description": "UID of the event to update."
+    },
+    "summary": {
+      "type": "string",
+      "description": "New title/summary for the event (optional)."
+    },
+    "start": {
+      "type": "string",
+      "description": "New ISO 8601 datetime string for the event start (optional)."
+    },
+    "end": {
+      "type": "string",
+      "description": "New ISO 8601 datetime string for the event end (optional)."
+    },
+    "description": {
+      "type": "string",
+      "description": "New description for the event (optional)."
+    },
+    "location": {
+      "type": "string",
+      "description": "New location for the event (optional)."
+    }
+  }
+}

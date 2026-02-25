@@ -1,0 +1,15 @@
+{
+  "name": "delete_event",
+  "description": "Delete an event by UID from a named calendar.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar containing the event."
+    },
+    "uid": {
+      "type": "string",
+      "description": "UID of the event to delete."
+    }
+  }
+}

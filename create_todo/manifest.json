@@ -1,0 +1,27 @@
+{
+  "name": "create_todo",
+  "description": "Create a new TODO item in a named calendar.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar to create the todo in."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Title/summary of the todo."
+    },
+    "due": {
+      "type": "string",
+      "description": "Optional ISO 8601 datetime string for the due date."
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional longer description of the todo."
+    },
+    "priority": {
+      "type": "integer",
+      "description": "Optional priority from 0 (undefined) to 9 per RFC 5545, where 1 is highest."
+    }
+  }
+}

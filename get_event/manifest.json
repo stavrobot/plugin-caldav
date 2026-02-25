@@ -1,0 +1,15 @@
+{
+  "name": "get_event",
+  "description": "Fetch a single event by UID from a named calendar, returning full iCalendar data and extracted fields.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar containing the event."
+    },
+    "uid": {
+      "type": "string",
+      "description": "UID of the event to retrieve."
+    }
+  }
+}

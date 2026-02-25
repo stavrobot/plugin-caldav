@@ -1,0 +1,6 @@
+{
+  "name": "list_calendars",
+  "description": "List all calendars on the CalDAV server.",
+  "entrypoint": "run.py",
+  "parameters": {}
+}

@@ -1,0 +1,15 @@
+{
+  "name": "create_calendar",
+  "description": "Create a new calendar on the CalDAV server.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "description": "Name of the calendar to create."
+    },
+    "supported_components": {
+      "type": "string",
+      "description": "Comma-separated list of supported components (e.g. \"VEVENT,VTODO\"). Defaults to \"VEVENT,VTODO\"."
+    }
+  }
+}

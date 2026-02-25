@@ -1,0 +1,11 @@
+{
+  "name": "delete_calendar",
+  "description": "Delete a calendar from the CalDAV server by name.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "description": "Name of the calendar to delete."
+    }
+  }
+}

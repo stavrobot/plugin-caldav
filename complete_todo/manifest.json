@@ -1,0 +1,15 @@
+{
+  "name": "complete_todo",
+  "description": "Mark a TODO item as completed by UID.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar containing the todo."
+    },
+    "uid": {
+      "type": "string",
+      "description": "UID of the todo to mark as completed."
+    }
+  }
+}

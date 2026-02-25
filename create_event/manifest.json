@@ -1,0 +1,31 @@
+{
+  "name": "create_event",
+  "description": "Create a new event in a named calendar.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar to create the event in."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Title/summary of the event."
+    },
+    "start": {
+      "type": "string",
+      "description": "ISO 8601 datetime string for the event start."
+    },
+    "end": {
+      "type": "string",
+      "description": "ISO 8601 datetime string for the event end."
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional longer description of the event."
+    },
+    "location": {
+      "type": "string",
+      "description": "Optional location of the event."
+    }
+  }
+}
