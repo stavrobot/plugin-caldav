@@ -4,6 +4,13 @@ import sys
 import caldav
 
 
+def validate_parameters(parameters: dict[str, object], valid_names: set[str]) -> None:
+    unknown = set(parameters.keys()) - valid_names
+    if unknown:
+        print(f"Unknown parameters: {', '.join(sorted(unknown))}", file=sys.stderr)
+        sys.exit(1)
+
+
 def get_principal() -> caldav.Principal:
     # Tools run from their own subdirectory, so ../config.json resolves to
     # the plugin root's config.json regardless of where helpers.py lives.

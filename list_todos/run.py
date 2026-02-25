@@ -33,6 +33,7 @@ def extract_todo_fields(component: icalendar.cal.Component) -> dict[str, str | N
 
 def main() -> None:
     parameters = json.load(sys.stdin)
+    helpers.validate_parameters(parameters, {"calendar_name", "status"})
     calendar_name: str = parameters["calendar_name"]
     status_filter: str | None = parameters.get("status")
 

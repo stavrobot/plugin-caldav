@@ -15,6 +15,7 @@ import icalendar
 
 def main() -> None:
     parameters = json.load(sys.stdin)
+    helpers.validate_parameters(parameters, {"calendar_name", "summary", "start", "end", "description", "location"})
     calendar_name: str = parameters["calendar_name"]
     summary: str = parameters["summary"]
     start_string: str = parameters["start"]

@@ -12,6 +12,7 @@ import helpers
 
 def main() -> None:
     parameters = json.load(sys.stdin)
+    helpers.validate_parameters(parameters, {"name"})
     name: str = parameters["name"]
 
     principal = helpers.get_principal()

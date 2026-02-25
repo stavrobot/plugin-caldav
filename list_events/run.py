@@ -36,6 +36,7 @@ def extract_event_fields(component: icalendar.cal.Component) -> dict[str, str | 
 
 def main() -> None:
     parameters = json.load(sys.stdin)
+    helpers.validate_parameters(parameters, {"calendar_name", "start", "end"})
     calendar_name: str = parameters["calendar_name"]
     start_string: str | None = parameters.get("start")
     end_string: str | None = parameters.get("end")

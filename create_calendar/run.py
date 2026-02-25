@@ -12,6 +12,7 @@ import helpers
 
 def main() -> None:
     parameters = json.load(sys.stdin)
+    helpers.validate_parameters(parameters, {"name", "supported_components"})
     name: str = parameters["name"]
     supported_components: list[str] = [
         component.strip()
