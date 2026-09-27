@@ -1,6 +1,6 @@
 {
   "name": "complete_todo",
-  "description": "Mark a TODO item as completed by UID.",
+  "description": "Mark a TODO item as completed by UID. For a recurring todo (RRULE), this marks the whole series as completed.",
   "entrypoint": "run.py",
   "parameters": {
     "calendar_name": {

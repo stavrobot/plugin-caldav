@@ -1,6 +1,6 @@
 {
   "name": "list_todos",
-  "description": "List todos in a calendar, optionally filtered by status.",
+  "description": "List todos in a calendar, optionally filtered by status. Returns an array of todos with uid, summary, due, timezone, status, description and priority. due is ISO 8601 with an offset for zoned, UTC or legacy fixed-offset values, a bare local time for floating values, or YYYY-MM-DD for all-day due dates, and null when no due date is set. timezone is the IANA name, 'UTC', the legacy TZID as stored (e.g. 'UTC+03:00'), 'floating', null for all-day or missing due dates, or the raw TZID when unknown.",
   "entrypoint": "run.py",
   "parameters": {
     "calendar_name": {

@@ -13,7 +13,11 @@
     },
     "due": {
       "type": "string",
-      "description": "Optional ISO 8601 datetime string for the due date."
+      "description": "Optional due date as ISO 8601. A bare datetime (e.g. 2026-09-28T21:00:00) is interpreted in the selected timezone; an offset datetime (e.g. 2026-09-28T21:00:00+03:00) is converted to it. A date (e.g. 2026-09-28) creates an all-day due date."
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Optional IANA timezone name (e.g. Europe/Athens) overriding the configured default_timezone for bare datetimes."
     },
     "description": {
       "type": "string",

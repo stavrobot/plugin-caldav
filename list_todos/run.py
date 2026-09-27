@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run
 # /// script
-# dependencies = ["caldav", "icalendar"]
+# dependencies = ["caldav", "icalendar>=6.1", "tzdata"]
 # ///
 
 import json
@@ -12,11 +12,9 @@ import icalendar
 
 
 def extract_todo_fields(component: icalendar.cal.Component) -> dict[str, str | None]:
-    raw_due = component.get("DUE")
-    due_value = raw_due.dt if raw_due else None
-    # date objects have no isoformat with time component, but both date and
-    # datetime support .isoformat(), so this handles both uniformly.
-    due_string = due_value.isoformat() if due_value is not None else None
+    # format_property returns ISO 8601 with an offset for zoned/UTC/legacy
+    # values, a bare local time for floating ones and YYYY-MM-DD for all-day.
+    due, timezone = helpers.format_property(component, "DUE")
 
     raw_priority = component.get("PRIORITY")
     priority_string = str(int(raw_priority)) if raw_priority is not None else ""
@@ -24,7 +22,8 @@ def extract_todo_fields(component: icalendar.cal.Component) -> dict[str, str | N
     return {
         "uid": str(component.get("UID", "")),
         "summary": str(component.get("SUMMARY", "")),
-        "due": due_string,
+        "due": due,
+        "timezone": timezone,
         "status": str(component.get("STATUS", "")),
         "description": str(component.get("DESCRIPTION", "")),
         "priority": priority_string,
@@ -56,4 +55,5 @@ def main() -> None:
     print(json.dumps(result))
 
 
-main()
+if __name__ == "__main__":
+    main()

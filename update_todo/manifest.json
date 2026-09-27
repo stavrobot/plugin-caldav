@@ -1,0 +1,39 @@
+{
+  "name": "update_todo",
+  "description": "Update fields of an existing TODO item identified by UID. Only provided fields are changed.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "calendar_name": {
+      "type": "string",
+      "description": "Name of the calendar containing the todo."
+    },
+    "uid": {
+      "type": "string",
+      "description": "UID of the todo to update."
+    },
+    "summary": {
+      "type": "string",
+      "description": "New title/summary for the todo (optional)."
+    },
+    "description": {
+      "type": "string",
+      "description": "New description for the todo (optional)."
+    },
+    "priority": {
+      "type": "integer",
+      "description": "New priority from 0 (undefined) to 9 per RFC 5545, where 1 is highest (optional)."
+    },
+    "due": {
+      "type": "string",
+      "description": "New due date as ISO 8601 (optional). A bare datetime is interpreted in the selected timezone; an offset datetime is converted to it; a date creates an all-day due. Pass null to remove the due date."
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone name (e.g. Europe/Athens) to express the todo's dates in. Defaults to the todo's existing DUE TZID, then the configured default timezone."
+    },
+    "status": {
+      "type": "string",
+      "description": "New status: NEEDS-ACTION, IN-PROCESS, COMPLETED or CANCELLED (optional)."
+    }
+  }
+}

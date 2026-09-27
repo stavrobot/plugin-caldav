@@ -1,6 +1,7 @@
 import json
 import re
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -127,6 +128,50 @@ def read_property(component: icalendar.cal.Component, name: str) -> IcalTime | N
         # Unknown TZID with no VTIMEZONE: keep the naive value and raw TZID.
         return IcalTime(value=value, tzid=tzid)
     return IcalTime(value=value.replace(tzinfo=zone), tzid=tzid)
+
+
+# default_zone is either a resolved ZoneInfo or a callable that resolves the
+# configured default lazily, so an invalid config value only matters when the
+# fallback is actually needed.
+DefaultZone = ZoneInfo | Callable[[], ZoneInfo]
+
+
+def resolve_target_zone(
+    component: icalendar.cal.Component,
+    parameters: dict[str, object],
+    default_zone: DefaultZone,
+    property_name: str = "DTSTART",
+) -> ZoneInfo:
+    """Pick the zone to express a component's times in.
+
+    Precedence: explicit timezone parameter, then the existing property's TZID
+    if it names a real IANA zone, then the configured default.
+    """
+    if "timezone" in parameters:
+        return resolve_timezone(str(parameters["timezone"]))
+
+    existing = read_property(component, property_name)
+    if existing is not None and existing.tzid is not None:
+        try:
+            return ZoneInfo(existing.tzid)
+        except (ZoneInfoNotFoundError, ValueError):
+            pass
+    return default_zone() if callable(default_zone) else default_zone
+
+
+def reinterpret_time(existing: IcalTime, target: ZoneInfo) -> date | datetime:
+    """Express an existing stored value in the target zone.
+
+    All-day values carry no time to move. Zoned IANA or legacy fixed-offset
+    values keep the same instant; floating (or an unresolvable TZID) values keep
+    the wall-clock time.
+    """
+    if existing.is_all_day:
+        return existing.value
+    value = existing.value
+    if value.tzinfo is not None:
+        return value.astimezone(target)
+    return value.replace(tzinfo=target)
 
 
 def timezone_label(parsed: IcalTime) -> str | None:
