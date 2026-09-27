@@ -1,6 +1,7 @@
 {
   "name": "caldav",
   "description": "Manage calendars, events, and todos on a CalDAV server.",
+  "summary": "Manage CalDAV calendars, events and todos",
   "config": {
     "server_url": {
       "description": "CalDAV server base URL (e.g. https://caldav.example.com)",
