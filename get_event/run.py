@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run
 # /// script
-# dependencies = ["caldav", "icalendar"]
+# dependencies = ["caldav", "icalendar>=6.1", "tzdata"]
 # ///
 
 import json
@@ -26,22 +26,13 @@ def main() -> None:
         c for c in parsed.walk() if c.name == "VEVENT"
     )
 
-    raw_start = component.get("DTSTART")
-    raw_end = component.get("DTEND")
-
-    start_value = raw_start.dt if raw_start else None
-    end_value = raw_end.dt if raw_end else None
-
     print(json.dumps({
         "data": event.data,
-        "uid": str(component.get("UID", "")),
-        "summary": str(component.get("SUMMARY", "")),
-        "start": start_value.isoformat() if start_value is not None else None,
-        "end": end_value.isoformat() if end_value is not None else None,
-        "description": str(component.get("DESCRIPTION", "")),
+        **helpers.extract_event_fields(component),
         "location": str(component.get("LOCATION", "")),
         "status": str(component.get("STATUS", "")),
     }))
 
 
-main()
+if __name__ == "__main__":
+    main()

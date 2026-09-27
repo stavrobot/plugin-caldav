@@ -23,6 +23,10 @@
       "type": "string",
       "description": "New ISO 8601 datetime string for the event end (optional)."
     },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone name (e.g. Europe/Athens) to express the event times in. Defaults to the event's existing TZID, then the configured default timezone."
+    },
     "description": {
       "type": "string",
       "description": "New description for the event (optional)."

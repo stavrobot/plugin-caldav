@@ -1,6 +1,6 @@
 {
   "name": "get_event",
-  "description": "Fetch a single event by UID from a named calendar, returning full iCalendar data and extracted fields.",
+  "description": "Fetch a single event by UID from a named calendar. Returns data (raw iCalendar text) plus uid, summary, start, end, timezone, description, location and status. start/end are ISO 8601 with an offset for zoned, UTC or legacy fixed-offset values, a bare local time for floating values, or YYYY-MM-DD for all-day events. timezone is the IANA name, 'UTC', the legacy TZID as stored (e.g. 'UTC+03:00'), 'floating', null for all-day events, or the raw TZID when unknown.",
   "entrypoint": "run.py",
   "parameters": {
     "calendar_name": {

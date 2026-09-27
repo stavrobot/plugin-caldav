@@ -1,6 +1,6 @@
 {
   "name": "list_events",
-  "description": "List events in a calendar, optionally filtered by a date/time range.",
+  "description": "List events in a calendar, optionally filtered by a date/time range. Returns an array of events with uid, summary, start, end, timezone and description. start/end are ISO 8601 with an offset for zoned, UTC or legacy fixed-offset values, a bare local time for floating values, or YYYY-MM-DD for all-day events. timezone is the IANA name, 'UTC', the legacy TZID as stored (e.g. 'UTC+03:00'), 'floating', null for all-day events, or the raw TZID when unknown.",
   "entrypoint": "run.py",
   "parameters": {
     "calendar_name": {
@@ -9,11 +9,11 @@
     },
     "start": {
       "type": "string",
-      "description": "ISO 8601 datetime string for the start of the search range (optional)."
+      "description": "ISO 8601 datetime string for the start of the search range (optional). Offset-less values are read in the configured default timezone (UTC if unset)."
     },
     "end": {
       "type": "string",
-      "description": "ISO 8601 datetime string for the end of the search range (optional)."
+      "description": "ISO 8601 datetime string for the end of the search range (optional). Offset-less values are read in the configured default timezone (UTC if unset)."
     }
   }
 }

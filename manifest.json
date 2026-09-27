@@ -13,6 +13,10 @@
     "password": {
       "description": "Password for authentication",
       "required": true
+    },
+    "default_timezone": {
+      "description": "IANA timezone name used for bare (offset-less) datetimes, e.g. Europe/Athens. Defaults to UTC when unset.",
+      "required": false
     }
   }
 }
