@@ -18,6 +18,10 @@
     "default_timezone": {
       "description": "IANA timezone name used for bare (offset-less) datetimes, e.g. Europe/Athens. Defaults to UTC when unset.",
       "required": false
+    },
+    "freebusy_excluded_calendars": {
+      "description": "Comma-separated calendar names ignored by the free_busy tool (case-insensitive, trimmed). Defaults to 'Birthdays,Namedays' when unset; set to an empty string to exclude no calendars by name.",
+      "required": false
     }
   }
 }

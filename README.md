@@ -15,6 +15,9 @@ Then configure it with your CalDAV server credentials:
 - **password**: Password for authentication
 - **default_timezone** (optional): IANA timezone name (e.g. `Europe/Athens`) used
   for datetimes passed without an offset. Defaults to `UTC`.
+- **freebusy_excluded_calendars** (optional): comma-separated calendar names
+  ignored by `free_busy` (case-insensitive). Defaults to `Birthdays,Namedays`;
+  set it to an empty string to exclude no calendars by name.
 
 ## Timezones
 
@@ -36,7 +39,7 @@ all-day, together with a `timezone` field describing the zone.
 Tests use iCal text fixtures and never contact a CalDAV server. Run them with:
 
 ```sh
-uv run --with pytest --with caldav --with icalendar --with tzdata pytest
+uv run --with pytest --with caldav --with icalendar --with tzdata --with recurring-ical-events pytest
 ```
 
 ## Tools
@@ -54,6 +57,7 @@ uv run --with pytest --with caldav --with icalendar --with tzdata pytest
 | Tool | Description |
 |---|---|
 | `list_events` | List events in a calendar, optionally filtered by date range |
+| `free_busy` | List busy time blocks across all event calendars, without event details |
 | `get_event` | Get a single event by UID |
 | `create_event` | Create an event |
 | `update_event` | Update an existing event's fields |

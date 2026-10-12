@@ -1,0 +1,15 @@
+{
+  "name": "free_busy",
+  "description": "Return busy time blocks across all event calendars for a date/time range. Returns {\"busy\": [{\"start\", \"end\"}]} where start/end are ISO 8601 datetimes with an offset in the configured default timezone, merged and clipped to the range. No event details (summary, UID, attendees, calendar, etc.) are returned.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "start": {
+      "type": "string",
+      "description": "ISO 8601 date or datetime for the start of the range. Date-only values mean local midnight; offset-less datetimes are read in the configured default timezone (UTC if unset)."
+    },
+    "end": {
+      "type": "string",
+      "description": "ISO 8601 date or datetime for the end of the range (exclusive). Date-only values cover the whole day, up to the next local midnight; offset-less datetimes are read in the configured default timezone (UTC if unset). The range must be positive and at most 31 days."
+    }
+  }
+}
